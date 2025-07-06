@@ -1,33 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* EditMyTrip Design System - Travel Reel Editing Agency */
 
 @layer base {
   :root {
+    /* Brand Colors - Based on logo gradient */
+    --brand-teal: 174 44% 51%;
+    --brand-coral: 11 86% 68%;
+    --brand-dark: 218 23% 23%;
+    
+    /* Background & Surface */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 218 23% 23%;
+    --surface: 0 0% 98%;
+    --surface-variant: 210 20% 95%;
 
+    /* Primary Theme - Teal */
+    --primary: 174 44% 51%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 174 44% 61%;
+    --primary-dark: 174 44% 41%;
+
+    /* Secondary Theme - Coral */
+    --secondary: 11 86% 68%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 11 86% 78%;
+    --secondary-dark: 11 86% 58%;
+
+    /* Accent & Support */
+    --accent: 45 93% 58%;
+    --accent-foreground: 218 23% 23%;
+    
+    --muted: 210 20% 95%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Interactive States */
+    --hover-overlay: 0 0% 0% / 0.05;
+    --focus-ring: 174 44% 51% / 0.3;
+    
+    /* Additional System Colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 174 44% 51%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 218 23% 23%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 218 23% 23%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Gradients */
+    --gradient-brand: linear-gradient(135deg, hsl(var(--brand-teal)), hsl(var(--brand-coral)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--brand-teal) / 0.9), hsl(var(--brand-coral) / 0.9));
+    --gradient-card: linear-gradient(145deg, hsl(var(--surface)), hsl(var(--surface-variant)));
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 12px hsl(var(--brand-teal) / 0.1);
+    --shadow-medium: 0 8px 24px hsl(var(--brand-teal) / 0.15);
+    --shadow-strong: 0 12px 32px hsl(var(--brand-teal) / 0.2);
+    --shadow-coral: 0 8px 24px hsl(var(--brand-coral) / 0.15);
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Spacing & Sizing */
+    --radius: 12px;
+    --radius-large: 20px;
+    --radius-small: 8px;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Typography */
+    --font-heading: 'Poppins', -apple-system, sans-serif;
+    --font-body: 'Poppins', -apple-system, sans-serif;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -92,14 +140,141 @@ All colors MUST be HSL.
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-}
 
-@layer base {
+  /* Base Styles */
   * {
     @apply border-border;
   }
 
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+}
+
+/* Custom Component Styles */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-medium transition-all duration-300;
+    background: var(--gradient-brand);
+    color: hsl(var(--primary-foreground));
+    box-shadow: var(--shadow-soft);
+    transform: translateY(0);
+  }
+  
+  .btn-primary:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-medium border-2 transition-all duration-300;
+    color: hsl(var(--primary));
+    border-color: hsl(var(--primary));
+    background: hsl(var(--background));
+  }
+  
+  .btn-secondary:hover {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .card-gradient {
+    background: var(--gradient-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-smooth);
+  }
+  
+  .card-gradient:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-4px);
+  }
+
+  .text-gradient {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-background {
+    background: linear-gradient(135deg, 
+      hsl(var(--brand-teal) / 0.95), 
+      hsl(var(--brand-coral) / 0.95)
+    );
+  }
+  
+  /* Animation Classes */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .slide-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .slide-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .scale-in {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .scale-in.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* WhatsApp Floating Button */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+    transition: var(--transition-spring);
+    z-index: 1000;
+  }
+  
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+  }
+
+  /* Responsive Grid */
+  .responsive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
   }
 }
