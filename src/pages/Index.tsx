@@ -30,7 +30,7 @@ const Index = () => {
 
   const handleWhatsAppClick = () => {
     const message = "Hi, I want to get my travel reel edited!";
-    const phoneNumber = "91XXXXXXXXXX"; // Replace with actual number
+    const phoneNumber = "916287116458";
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
@@ -244,25 +244,58 @@ const Index = () => {
           </div>
 
           <div className="max-w-6xl mx-auto responsive-grid">
-            {/* Sample Reel Placeholders - Replace with actual embeds */}
-            {[1, 2, 3].map((index) => (
-              <div key={index} className="card-gradient p-6 text-center scale-in">
-                <div className="aspect-[9/16] bg-muted rounded-xl mb-4 flex items-center justify-center">
-                  <div className="text-center">
-                    <Play className="w-12 h-12 text-muted-foreground mx-auto mb-2" />
-                    <p className="text-sm text-muted-foreground">
-                      {/* TODO: Add actual video embed here */}
-                      Sample Reel #{index}
-                    </p>
-                    <p className="text-xs text-muted-foreground mt-2">
-                      Replace with YouTube Shorts / Instagram embed
-                    </p>
-                  </div>
-                </div>
-                <h3 className="font-semibold mb-2">Amazing Travel Reel</h3>
-                <p className="text-sm text-muted-foreground">Bali Adventure • 30 seconds</p>
+            {/* Sample Reel #1 */}
+            <div className="card-gradient p-6 text-center scale-in">
+              <div className="aspect-[9/16] bg-muted rounded-xl mb-4 overflow-hidden">
+                <iframe
+                  src="https://www.instagram.com/reel/C7MCJaltrc0/embed"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  scrolling="no"
+                  allowTransparency={true}
+                  className="rounded-xl"
+                  title="Sample Reel #1"
+                />
               </div>
-            ))}
+              <h3 className="font-semibold mb-2">Amazing Travel Reel</h3>
+              <p className="text-sm text-muted-foreground">Sample Reel #1 • 30 seconds</p>
+            </div>
+
+            {/* Sample Reel #2 */}
+            <div className="card-gradient p-6 text-center scale-in">
+              <div className="aspect-[9/16] bg-muted rounded-xl mb-4 overflow-hidden">
+                <iframe
+                  src="https://www.instagram.com/reel/DLfW8zghD5m/embed"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  scrolling="no"
+                  allowTransparency={true}
+                  className="rounded-xl"
+                  title="Sample Reel #2"
+                />
+              </div>
+              <h3 className="font-semibold mb-2">Stunning Travel Reel</h3>
+              <p className="text-sm text-muted-foreground">Sample Reel #2 • 30 seconds</p>
+            </div>
+
+            {/* Sample Reel #3 - Placeholder */}
+            <div className="card-gradient p-6 text-center scale-in">
+              <div className="aspect-[9/16] bg-muted rounded-xl mb-4 flex items-center justify-center">
+                <div className="text-center">
+                  <Play className="w-12 h-12 text-muted-foreground mx-auto mb-2" />
+                  <p className="text-sm text-muted-foreground">
+                    Sample Reel #3
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-2">
+                    Coming Soon
+                  </p>
+                </div>
+              </div>
+              <h3 className="font-semibold mb-2">Your Next Reel</h3>
+              <p className="text-sm text-muted-foreground">Ready to Create • 30 seconds</p>
+            </div>
           </div>
 
           <div className="text-center mt-12">
