@@ -26,14 +26,19 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				
-				/* Brand Colors */
-				'brand-teal': 'hsl(var(--brand-teal))',
-				'brand-coral': 'hsl(var(--brand-coral))',
-				'brand-dark': 'hsl(var(--brand-dark))',
+				/* Vibrant Travel Colors */
+				'sunset-orange': 'hsl(var(--sunset-orange))',
+				'tropical-blue': 'hsl(var(--tropical-blue))',
+				'adventure-teal': 'hsl(var(--adventure-teal))',
+				'warm-coral': 'hsl(var(--warm-coral))',
+				'travel-dark': 'hsl(var(--travel-dark))',
+				'sky-blue': 'hsl(var(--sky-blue))',
+				'golden-hour': 'hsl(var(--golden-hour))',
 				
 				/* Surface Colors */
 				surface: 'hsl(var(--surface))',
 				'surface-variant': 'hsl(var(--surface-variant))',
+				'glass-surface': 'hsl(var(--glass-surface))',
 				
 				/* Primary Theme */
 				primary: {
@@ -100,12 +105,16 @@ export default {
 				'soft': 'var(--shadow-soft)',
 				'medium': 'var(--shadow-medium)', 
 				'strong': 'var(--shadow-strong)',
-				'coral': 'var(--shadow-coral)'
+				'glow': 'var(--shadow-glow)',
+				'tropical': 'var(--shadow-tropical)'
 			},
 			backgroundImage: {
-				'gradient-brand': 'var(--gradient-brand)',
+				'gradient-sunset': 'var(--gradient-sunset)',
+				'gradient-ocean': 'var(--gradient-ocean)',
+				'gradient-adventure': 'var(--gradient-adventure)',
 				'gradient-hero': 'var(--gradient-hero)',
-				'gradient-card': 'var(--gradient-card)'
+				'gradient-glass': 'var(--gradient-glass)',
+				'gradient-glow': 'var(--gradient-glow)'
 			},
 			keyframes: {
 				'accordion-down': {
