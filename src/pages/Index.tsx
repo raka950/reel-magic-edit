@@ -94,7 +94,7 @@ const Index = () => {
             <img 
               src="/lovable-uploads/6f31e6d2-0376-46d1-80d2-e44b44a2f13e.png" 
               alt="EditMyTrip Logo" 
-              className="w-32 h-32 mx-auto mb-8 drop-shadow-2xl icon-float"
+              className="w-32 h-32 mx-auto mb-8 drop-shadow-2xl icon-float rounded-2xl"
             />
             <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-tight">
               Edit<span className="text-golden-hour">My</span>Trip
