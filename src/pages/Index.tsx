@@ -1,8 +1,15 @@
-import React, { useEffect, useRef } from 'react';
-import { Play, Video, Clock, Music, MessageCircle, Upload, Download, Instagram, Youtube, Smartphone, Phone, Plane, Camera, MapPin, Star, Users, Heart, Send } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Play, Video, Clock, Music, MessageCircle, Upload, Download, Instagram, Youtube, Smartphone, Phone, Plane, Camera, MapPin, Star, Users, Heart, Send, LogIn, UserPlus, LogOut } from 'lucide-react';
+import { AuthModal } from '@/components/AuthModal';
+import { UploadModal } from '@/components/UploadModal';
+import { useAuth } from '@/hooks/useAuth';
 
 const Index = () => {
   const observerRef = useRef<IntersectionObserver | null>(null);
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [authMode, setAuthMode] = useState<'signin' | 'signup'>('signin');
+  const [uploadModalOpen, setUploadModalOpen] = useState(false);
+  const { user, signOut, loading } = useAuth();
 
   useEffect(() => {
     // Initialize intersection observer for animations
@@ -57,6 +64,53 @@ const Index = () => {
             <button onClick={() => handleSmoothScroll('services')} className="text-muted-foreground hover:text-sunset-orange transition-colors">Services</button>
             <button onClick={() => handleSmoothScroll('samples')} className="text-muted-foreground hover:text-sunset-orange transition-colors">Samples</button>
             <button onClick={() => handleSmoothScroll('testimonials')} className="text-muted-foreground hover:text-sunset-orange transition-colors">Reviews</button>
+            
+            {!loading && (
+              <>
+                {user ? (
+                  <div className="flex items-center gap-3">
+                    <button 
+                      onClick={() => setUploadModalOpen(true)}
+                      className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-lg hover:opacity-90 transition-all duration-300 flex items-center gap-2"
+                    >
+                      <Upload className="w-4 h-4" />
+                      Upload
+                    </button>
+                    <button 
+                      onClick={signOut}
+                      className="text-muted-foreground hover:text-sunset-orange transition-colors flex items-center gap-2"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      Sign Out
+                    </button>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-3">
+                    <button 
+                      onClick={() => {
+                        setAuthMode('signin');
+                        setAuthModalOpen(true);
+                      }}
+                      className="text-muted-foreground hover:text-sunset-orange transition-colors flex items-center gap-2"
+                    >
+                      <LogIn className="w-4 h-4" />
+                      Sign In
+                    </button>
+                    <button 
+                      onClick={() => {
+                        setAuthMode('signup');
+                        setAuthModalOpen(true);
+                      }}
+                      className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-lg hover:opacity-90 transition-all duration-300 flex items-center gap-2"
+                    >
+                      <UserPlus className="w-4 h-4" />
+                      Sign Up
+                    </button>
+                  </div>
+                )}
+              </>
+            )}
+            
             <button onClick={handleWhatsAppClick} className="btn-adventure text-sm">Get Started</button>
           </div>
         </div>
@@ -527,6 +581,17 @@ const Index = () => {
       >
         <MessageCircle className="w-8 h-8 text-white" />
       </button>
+
+      {/* Modals */}
+      <AuthModal 
+        isOpen={authModalOpen} 
+        onClose={() => setAuthModalOpen(false)}
+        initialMode={authMode}
+      />
+      <UploadModal 
+        isOpen={uploadModalOpen} 
+        onClose={() => setUploadModalOpen(false)} 
+      />
     </div>
   );
 };
