@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Play, Video, Clock, Music, MessageCircle, Upload, Download, Instagram, Youtube, Smartphone, Phone, Plane, Camera, MapPin, Star, Users, Heart, Send, LogIn, UserPlus, LogOut } from 'lucide-react';
+import { Play, Video, Clock, Music, MessageCircle, Upload, Download, Instagram, Youtube, Smartphone, Phone, Plane, Camera, MapPin, Star, Users, Heart, Send, LogIn, UserPlus, LogOut, Menu, X } from 'lucide-react';
 import { AuthModal } from '@/components/AuthModal';
 import { UploadModal } from '@/components/UploadModal';
 import { useAuth } from '@/hooks/useAuth';
@@ -9,6 +9,7 @@ const Index = () => {
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [authMode, setAuthMode] = useState<'signin' | 'signup'>('signin');
   const [uploadModalOpen, setUploadModalOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user, signOut, loading } = useAuth();
 
   useEffect(() => {
@@ -50,68 +51,188 @@ const Index = () => {
     <div className="min-h-screen bg-background font-body travel-bg">
       {/* Navigation */}
       <nav className="fixed top-0 w-full glass-card backdrop-blur-lg border-b border-white/20 z-50">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img 
-              src="/lovable-uploads/6f31e6d2-0376-46d1-80d2-e44b44a2f13e.png" 
-              alt="EditMyTrip Logo" 
-              className="w-10 h-10"
-            />
-            <span className="text-xl font-bold text-adventure">EditMyTrip</span>
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <img 
+                src="/lovable-uploads/6f31e6d2-0376-46d1-80d2-e44b44a2f13e.png" 
+                alt="EditMyTrip Logo" 
+                className="w-10 h-10"
+              />
+              <span className="text-xl font-bold text-adventure">EditMyTrip</span>
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-6">
+              <button onClick={() => handleSmoothScroll('about')} className="text-muted-foreground hover:text-sunset-orange transition-colors">About</button>
+              <button onClick={() => handleSmoothScroll('services')} className="text-muted-foreground hover:text-sunset-orange transition-colors">Services</button>
+              <button onClick={() => handleSmoothScroll('samples')} className="text-muted-foreground hover:text-sunset-orange transition-colors">Samples</button>
+              <button onClick={() => handleSmoothScroll('testimonials')} className="text-muted-foreground hover:text-sunset-orange transition-colors">Reviews</button>
+              
+              {!loading && (
+                <>
+                  {user ? (
+                    <div className="flex items-center gap-3">
+                      <button 
+                        onClick={() => setUploadModalOpen(true)}
+                        className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-lg hover:opacity-90 transition-all duration-300 flex items-center gap-2"
+                      >
+                        <Upload className="w-4 h-4" />
+                        Upload
+                      </button>
+                      <button 
+                        onClick={signOut}
+                        className="text-muted-foreground hover:text-sunset-orange transition-colors flex items-center gap-2"
+                      >
+                        <LogOut className="w-4 h-4" />
+                        Sign Out
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-3">
+                      <button 
+                        onClick={() => {
+                          setAuthMode('signin');
+                          setAuthModalOpen(true);
+                        }}
+                        className="text-muted-foreground hover:text-sunset-orange transition-colors flex items-center gap-2"
+                      >
+                        <LogIn className="w-4 h-4" />
+                        Sign In
+                      </button>
+                      <button 
+                        onClick={() => {
+                          setAuthMode('signup');
+                          setAuthModalOpen(true);
+                        }}
+                        className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-lg hover:opacity-90 transition-all duration-300 flex items-center gap-2"
+                      >
+                        <UserPlus className="w-4 h-4" />
+                        Sign Up
+                      </button>
+                    </div>
+                  )}
+                </>
+              )}
+              
+              <button onClick={handleWhatsAppClick} className="btn-adventure text-sm">Get Started</button>
+            </div>
+
+            {/* Mobile Hamburger Button */}
+            <button 
+              className="md:hidden text-muted-foreground hover:text-sunset-orange transition-colors"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
-          <div className="hidden md:flex items-center gap-6">
-            <button onClick={() => handleSmoothScroll('about')} className="text-muted-foreground hover:text-sunset-orange transition-colors">About</button>
-            <button onClick={() => handleSmoothScroll('services')} className="text-muted-foreground hover:text-sunset-orange transition-colors">Services</button>
-            <button onClick={() => handleSmoothScroll('samples')} className="text-muted-foreground hover:text-sunset-orange transition-colors">Samples</button>
-            <button onClick={() => handleSmoothScroll('testimonials')} className="text-muted-foreground hover:text-sunset-orange transition-colors">Reviews</button>
-            
-            {!loading && (
-              <>
-                {user ? (
-                  <div className="flex items-center gap-3">
-                    <button 
-                      onClick={() => setUploadModalOpen(true)}
-                      className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-lg hover:opacity-90 transition-all duration-300 flex items-center gap-2"
-                    >
-                      <Upload className="w-4 h-4" />
-                      Upload
-                    </button>
-                    <button 
-                      onClick={signOut}
-                      className="text-muted-foreground hover:text-sunset-orange transition-colors flex items-center gap-2"
-                    >
-                      <LogOut className="w-4 h-4" />
-                      Sign Out
-                    </button>
-                  </div>
-                ) : (
-                  <div className="flex items-center gap-3">
-                    <button 
-                      onClick={() => {
-                        setAuthMode('signin');
-                        setAuthModalOpen(true);
-                      }}
-                      className="text-muted-foreground hover:text-sunset-orange transition-colors flex items-center gap-2"
-                    >
-                      <LogIn className="w-4 h-4" />
-                      Sign In
-                    </button>
-                    <button 
-                      onClick={() => {
-                        setAuthMode('signup');
-                        setAuthModalOpen(true);
-                      }}
-                      className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-lg hover:opacity-90 transition-all duration-300 flex items-center gap-2"
-                    >
-                      <UserPlus className="w-4 h-4" />
-                      Sign Up
-                    </button>
-                  </div>
-                )}
-              </>
-            )}
-            
-            <button onClick={handleWhatsAppClick} className="btn-adventure text-sm">Get Started</button>
+
+          {/* Mobile Menu */}
+          <div className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
+            mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          }`}>
+            <div className="pt-4 pb-2 space-y-3">
+              <button 
+                onClick={() => {
+                  handleSmoothScroll('about');
+                  setMobileMenuOpen(false);
+                }} 
+                className="block w-full text-left text-muted-foreground hover:text-sunset-orange transition-colors py-2"
+              >
+                About
+              </button>
+              <button 
+                onClick={() => {
+                  handleSmoothScroll('services');
+                  setMobileMenuOpen(false);
+                }} 
+                className="block w-full text-left text-muted-foreground hover:text-sunset-orange transition-colors py-2"
+              >
+                Services
+              </button>
+              <button 
+                onClick={() => {
+                  handleSmoothScroll('samples');
+                  setMobileMenuOpen(false);
+                }} 
+                className="block w-full text-left text-muted-foreground hover:text-sunset-orange transition-colors py-2"
+              >
+                Samples
+              </button>
+              <button 
+                onClick={() => {
+                  handleSmoothScroll('testimonials');
+                  setMobileMenuOpen(false);
+                }} 
+                className="block w-full text-left text-muted-foreground hover:text-sunset-orange transition-colors py-2"
+              >
+                Reviews
+              </button>
+              
+              {!loading && (
+                <div className="pt-2 border-t border-white/20">
+                  {user ? (
+                    <div className="space-y-3">
+                      <button 
+                        onClick={() => {
+                          setUploadModalOpen(true);
+                          setMobileMenuOpen(false);
+                        }}
+                        className="w-full bg-gradient-to-r from-primary to-secondary text-white px-4 py-3 rounded-lg hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-2"
+                      >
+                        <Upload className="w-4 h-4" />
+                        Upload
+                      </button>
+                      <button 
+                        onClick={() => {
+                          signOut();
+                          setMobileMenuOpen(false);
+                        }}
+                        className="w-full text-muted-foreground hover:text-sunset-orange transition-colors py-2 flex items-center justify-center gap-2"
+                      >
+                        <LogOut className="w-4 h-4" />
+                        Sign Out
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="space-y-3">
+                      <button 
+                        onClick={() => {
+                          setAuthMode('signin');
+                          setAuthModalOpen(true);
+                          setMobileMenuOpen(false);
+                        }}
+                        className="w-full text-muted-foreground hover:text-sunset-orange transition-colors py-2 flex items-center justify-center gap-2"
+                      >
+                        <LogIn className="w-4 h-4" />
+                        Sign In
+                      </button>
+                      <button 
+                        onClick={() => {
+                          setAuthMode('signup');
+                          setAuthModalOpen(true);
+                          setMobileMenuOpen(false);
+                        }}
+                        className="w-full bg-gradient-to-r from-primary to-secondary text-white px-4 py-3 rounded-lg hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-2"
+                      >
+                        <UserPlus className="w-4 h-4" />
+                        Sign Up
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
+              
+              <button 
+                onClick={() => {
+                  handleWhatsAppClick();
+                  setMobileMenuOpen(false);
+                }} 
+                className="w-full btn-adventure mt-4"
+              >
+                Get Started
+              </button>
+            </div>
           </div>
         </div>
       </nav>
