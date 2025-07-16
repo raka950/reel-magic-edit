@@ -146,8 +146,24 @@ const AdminDashboard = () => {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
   };
 
-  const generateDownloadUrl = async (filePath: string, fileName: string) => {
+  const generateDownloadUrl = async (fileUrl: string, fileName: string) => {
     try {
+      // Extract the file path from the full Supabase URL
+      // URL format: https://project.supabase.co/storage/v1/object/public/videos/path/to/file.mp4
+      const urlParts = fileUrl.split('/storage/v1/object/public/videos/');
+      if (urlParts.length !== 2) {
+        console.error('Invalid file URL format:', fileUrl);
+        toast({
+          title: "Error",
+          description: "Invalid file URL format",
+          variant: "destructive"
+        });
+        return null;
+      }
+      
+      const filePath = urlParts[1]; // This is the path within the bucket
+      console.log('Extracting file path:', filePath, 'from URL:', fileUrl);
+
       const { data, error } = await supabase.storage
         .from('videos')
         .createSignedUrl(filePath, 3600); // 1 hour expiry
@@ -156,7 +172,7 @@ const AdminDashboard = () => {
         console.error('Error creating signed URL:', error);
         toast({
           title: "Error",
-          description: "Failed to generate download link",
+          description: "Failed to generate download link: " + error.message,
           variant: "destructive"
         });
         return null;
@@ -174,8 +190,8 @@ const AdminDashboard = () => {
     }
   };
 
-  const handleDownload = async (filePath: string, fileName: string) => {
-    const downloadUrl = await generateDownloadUrl(filePath, fileName);
+  const handleDownload = async (fileUrl: string, fileName: string) => {
+    const downloadUrl = await generateDownloadUrl(fileUrl, fileName);
     if (downloadUrl) {
       // Create a temporary link to trigger download
       const link = document.createElement('a');
@@ -193,15 +209,15 @@ const AdminDashboard = () => {
     }
   };
 
-  const handlePreview = async (filePath: string) => {
-    const previewUrl = await generateDownloadUrl(filePath, 'preview');
+  const handlePreview = async (fileUrl: string) => {
+    const previewUrl = await generateDownloadUrl(fileUrl, 'preview');
     if (previewUrl) {
       window.open(previewUrl, '_blank');
     }
   };
 
-  const handleCopyLink = async (filePath: string) => {
-    const shareUrl = await generateDownloadUrl(filePath, 'shared');
+  const handleCopyLink = async (fileUrl: string) => {
+    const shareUrl = await generateDownloadUrl(fileUrl, 'shared');
     if (shareUrl) {
       await navigator.clipboard.writeText(shareUrl);
       toast({
