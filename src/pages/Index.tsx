@@ -115,6 +115,12 @@ const Index = () => {
                 </>
               )}
               
+              <a 
+                href="/admin/dashboard" 
+                className="text-xs text-muted-foreground hover:text-sunset-orange transition-colors border border-border px-3 py-1 rounded-md"
+              >
+                Admin Login
+              </a>
               <button onClick={handleWhatsAppClick} className="btn-adventure text-sm">Get Started</button>
             </div>
 
@@ -223,11 +229,18 @@ const Index = () => {
                 </div>
               )}
               
+              <a 
+                href="/admin/dashboard" 
+                className="w-full text-center text-xs text-muted-foreground hover:text-sunset-orange transition-colors border border-border px-3 py-2 rounded-md block"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Admin Login
+              </a>
               <button 
                 onClick={() => {
                   handleWhatsAppClick();
                   setMobileMenuOpen(false);
-                }} 
+                }}
                 className="w-full btn-adventure mt-4"
               >
                 Get Started

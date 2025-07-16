@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Users, Video, Clock, CheckCircle, TrendingUp, Download, Eye } from 'lucide-react';
+import { Users, Video, Clock, CheckCircle, TrendingUp, Download, Eye, Copy, ExternalLink } from 'lucide-react';
 import { AdminLayout } from '@/components/AdminLayout';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -69,9 +69,9 @@ const AdminDashboard = () => {
         return acc;
       }, {});
 
-      const mostActiveUserId = userCounts ? Object.keys(userCounts).reduce((a, b) => 
-        userCounts[a] > userCounts[b] ? a : b
-      ) : null;
+      const mostActiveUserId = userCounts && Object.keys(userCounts).length > 0 
+        ? Object.keys(userCounts).reduce((a, b) => userCounts[a] > userCounts[b] ? a : b)
+        : null;
 
       // Get most active user profile
       let mostActiveUserName = 'No data';
@@ -144,6 +144,71 @@ const AdminDashboard = () => {
     const sizes = ['Bytes', 'KB', 'MB', 'GB'];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  };
+
+  const generateDownloadUrl = async (filePath: string, fileName: string) => {
+    try {
+      const { data, error } = await supabase.storage
+        .from('videos')
+        .createSignedUrl(filePath, 3600); // 1 hour expiry
+
+      if (error) {
+        console.error('Error creating signed URL:', error);
+        toast({
+          title: "Error",
+          description: "Failed to generate download link",
+          variant: "destructive"
+        });
+        return null;
+      }
+
+      return data.signedUrl;
+    } catch (error) {
+      console.error('Error generating download URL:', error);
+      toast({
+        title: "Error",
+        description: "Failed to generate download link",
+        variant: "destructive"
+      });
+      return null;
+    }
+  };
+
+  const handleDownload = async (filePath: string, fileName: string) => {
+    const downloadUrl = await generateDownloadUrl(filePath, fileName);
+    if (downloadUrl) {
+      // Create a temporary link to trigger download
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = fileName;
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      toast({
+        title: "Success",
+        description: "Download started successfully",
+      });
+    }
+  };
+
+  const handlePreview = async (filePath: string) => {
+    const previewUrl = await generateDownloadUrl(filePath, 'preview');
+    if (previewUrl) {
+      window.open(previewUrl, '_blank');
+    }
+  };
+
+  const handleCopyLink = async (filePath: string) => {
+    const shareUrl = await generateDownloadUrl(filePath, 'shared');
+    if (shareUrl) {
+      await navigator.clipboard.writeText(shareUrl);
+      toast({
+        title: "Success",
+        description: "Download link copied to clipboard",
+      });
+    }
   };
 
   if (loading) {
@@ -252,11 +317,29 @@ const AdminDashboard = () => {
                         {upload.status}
                       </Badge>
                       <div className="flex items-center gap-2">
-                        <Button size="sm" variant="outline">
+                        <Button 
+                          size="sm" 
+                          variant="outline"
+                          onClick={() => handlePreview(upload.file_url)}
+                          title="Preview video"
+                        >
                           <Eye className="w-4 h-4" />
                         </Button>
-                        <Button size="sm" variant="outline">
+                        <Button 
+                          size="sm" 
+                          variant="outline"
+                          onClick={() => handleDownload(upload.file_url, upload.title + '.mp4')}
+                          title="Download video"
+                        >
                           <Download className="w-4 h-4" />
+                        </Button>
+                        <Button 
+                          size="sm" 
+                          variant="outline"
+                          onClick={() => handleCopyLink(upload.file_url)}
+                          title="Copy download link"
+                        >
+                          <Copy className="w-3 h-3" />
                         </Button>
                       </div>
                     </div>
