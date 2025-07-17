@@ -299,13 +299,23 @@ const Index = () => {
           </div>
           
           <div className="scale-in">
-            <button 
-              onClick={handleWhatsAppClick}
-              className="btn-adventure text-xl px-12 py-6 mb-6 inline-flex items-center gap-4"
-            >
-              <MessageCircle className="w-6 h-6" />
-              Start Your Journey
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+              <button 
+                onClick={handleWhatsAppClick}
+                className="btn-adventure text-lg px-8 py-4 inline-flex items-center gap-3 w-full sm:w-auto"
+              >
+                <MessageCircle className="w-5 h-5" />
+                Connect to WhatsApp
+              </button>
+              <div className="text-white/70 text-lg hidden sm:block">or</div>
+              <button 
+                onClick={() => setAuthModalOpen(true)}
+                className="bg-white/10 hover:bg-white/20 border-2 border-white/30 hover:border-white/50 text-white text-lg px-8 py-4 rounded-full inline-flex items-center gap-3 transition-all duration-300 w-full sm:w-auto"
+              >
+                <Upload className="w-5 h-5" />
+                Upload Video
+              </button>
+            </div>
             <p className="text-lg opacity-90">✨ 24-hour delivery • Only ₹99 per reel • Free revision</p>
           </div>
         </div>
