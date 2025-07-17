@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Lock, User, AlertCircle, Eye, EyeOff } from 'lucide-react';
+import { useNavigate, Link } from 'react-router-dom';
+import { Lock, User, AlertCircle, Eye, EyeOff, ArrowLeft } from 'lucide-react';
 import { useAdminAuth } from '@/hooks/useAdminAuth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -45,6 +45,16 @@ const AdminLogin = () => {
       
       <div className="relative w-full max-w-md">
         <div className="glass-card p-8 shadow-strong">
+          {/* Back Button */}
+          <div className="mb-6">
+            <Link 
+              to="/" 
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span className="text-sm">Back to Homepage</span>
+            </Link>
+          </div>
           {/* Logo and Title */}
           <div className="text-center mb-8">
             <div className="w-16 h-16 bg-gradient-sunset rounded-full flex items-center justify-center mx-auto mb-4">
