@@ -1,14 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
-import { Play, Video, Clock, Music, MessageCircle, Upload, Download, Instagram, Youtube, Smartphone, Phone, Plane, Camera, MapPin, Star, Users, Heart, Send, LogIn, UserPlus, LogOut, Menu, X, ChevronDown } from 'lucide-react';
+import { Play, Video, Clock, Music, MessageCircle, Upload, Download, Instagram, Youtube, Smartphone, Phone, Plane, Camera, MapPin, Star, Users, Heart, Send, LogIn, UserPlus, LogOut, Menu, X } from 'lucide-react';
 import { AuthModal } from '@/components/AuthModal';
 import { UploadModal } from '@/components/UploadModal';
-import { ThreePhoneScene } from '@/components/ThreePhoneScene';
-import { HowItWorksSection } from '@/components/HowItWorksSection';
-import { PricingSection } from '@/components/PricingSection';
-import { SampleReelsSection } from '@/components/SampleReelsSection';
-import { TestimonialsSection } from '@/components/TestimonialsSection';
-import { FloatingTelegramButton, BackgroundAnimation } from '@/components/FloatingElements';
 import { useAuth } from '@/hooks/useAuth';
 
 const Index = () => {
@@ -53,36 +46,24 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background font-body relative overflow-x-hidden">
-      <BackgroundAnimation />
+    <div className="min-h-screen bg-background font-body travel-bg">
       {/* Navigation */}
-      <motion.nav 
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="fixed top-0 w-full glass-card backdrop-blur-lg border-b border-white/20 z-50"
-      >
+      <nav className="fixed top-0 w-full glass-card backdrop-blur-lg border-b border-white/20 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <motion.div 
-              initial={{ x: -20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="flex items-center gap-3"
-            >
+            <div className="flex items-center gap-3">
               <img 
                 src="/lovable-uploads/6f31e6d2-0376-46d1-80d2-e44b44a2f13e.png" 
                 alt="EditMyTrip Logo" 
                 className="w-10 h-10"
               />
               <span className="text-xl font-bold text-adventure">EditMyTrip</span>
-            </motion.div>
+            </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-6">
               <button onClick={() => handleSmoothScroll('about')} className="text-muted-foreground hover:text-sunset-orange transition-colors">About</button>
-              <button onClick={() => handleSmoothScroll('how-it-works')} className="text-muted-foreground hover:text-sunset-orange transition-colors">How it Works</button>
-              <button onClick={() => handleSmoothScroll('pricing')} className="text-muted-foreground hover:text-sunset-orange transition-colors">Pricing</button>
+              <button onClick={() => handleSmoothScroll('services')} className="text-muted-foreground hover:text-sunset-orange transition-colors">Services</button>
               <button onClick={() => handleSmoothScroll('samples')} className="text-muted-foreground hover:text-sunset-orange transition-colors">Samples</button>
               <button onClick={() => handleSmoothScroll('testimonials')} className="text-muted-foreground hover:text-sunset-orange transition-colors">Reviews</button>
               
@@ -166,21 +147,12 @@ const Index = () => {
               </button>
               <button 
                 onClick={() => {
-                  handleSmoothScroll('how-it-works');
+                  handleSmoothScroll('services');
                   setMobileMenuOpen(false);
                 }} 
                 className="block w-full text-left text-muted-foreground hover:text-sunset-orange transition-colors py-2"
               >
-                How it Works
-              </button>
-              <button 
-                onClick={() => {
-                  handleSmoothScroll('pricing');
-                  setMobileMenuOpen(false);
-                }} 
-                className="block w-full text-left text-muted-foreground hover:text-sunset-orange transition-colors py-2"
-              >
-                Pricing
+                Services
               </button>
               <button 
                 onClick={() => {
@@ -274,7 +246,7 @@ const Index = () => {
             </div>
           </div>
         </div>
-      </motion.nav>
+      </nav>
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -286,194 +258,119 @@ const Index = () => {
              }}>
         </div>
         
+        {/* Floating Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 left-10 icon-float">
+            <Plane className="w-8 h-8 text-sunset-orange/60 icon-bounce" />
+          </div>
+          <div className="absolute top-40 right-20 icon-float">
+            <Camera className="w-10 h-10 text-tropical-blue/60 icon-rotate" />
+          </div>
+          <div className="absolute bottom-40 left-16 icon-float">
+            <MapPin className="w-6 h-6 text-warm-coral/60 icon-glow" />
+          </div>
+        </div>
+        
         {/* Hero Overlay */}
         <div className="absolute inset-0 bg-gradient-hero"></div>
         
         {/* Hero Content */}
-        <div className="relative z-10 w-full px-4">
-          <div className="container mx-auto grid lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
-            {/* Left Content */}
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-white"
-            >
-              <motion.h1 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
+        <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
+          <div className="fade-in mb-8">
+            <img 
+              src="/lovable-uploads/6f31e6d2-0376-46d1-80d2-e44b44a2f13e.png" 
+              alt="EditMyTrip Logo" 
+              className="w-32 h-32 mx-auto mb-8 drop-shadow-2xl icon-float rounded-2xl"
+            />
+            <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-tight">
+              Edit<span className="text-golden-hour">My</span>Trip
+            </h1>
+          </div>
+          
+          <div className="slide-up mb-10">
+            <p className="text-2xl md:text-3xl mb-4 font-semibold">
+              Turn Your Travel Videos into Stunning Reels!
+            </p>
+            <p className="text-xl opacity-90 max-w-3xl mx-auto leading-relaxed">
+              Transform your travel memories into cinematic short videos that captivate your audience and inspire wanderlust
+            </p>
+          </div>
+          
+          <div className="scale-in">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+              <button 
+                onClick={handleTelegramClick}
+                className="btn-adventure text-lg px-8 py-4 inline-flex items-center gap-3 w-full sm:w-auto"
               >
-                Turn Your Travel Memories Into 
-                <span className="text-transparent bg-clip-text bg-gradient-sunset block">
-                  Viral Reels!
-                </span>
-              </motion.h1>
-              
-              <motion.p 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed"
+                <MessageCircle className="w-5 h-5" />
+                Connect to Telegram
+              </button>
+              <div className="text-white/70 text-lg hidden sm:block">or</div>
+              <button 
+                onClick={() => setAuthModalOpen(true)}
+                className="bg-white/10 hover:bg-white/20 border-2 border-white/30 hover:border-white/50 text-white text-lg px-8 py-4 rounded-full inline-flex items-center gap-3 transition-all duration-300 w-full sm:w-auto"
               >
-                Professional video editing for travelers who want stunning content without the editing skills
-              </motion.p>
-              
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                className="flex flex-col sm:flex-row gap-4 mb-8"
-              >
-                <motion.button 
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={handleTelegramClick}
-                  className="btn-adventure text-lg px-8 py-4 inline-flex items-center gap-3"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  Get Started
-                </motion.button>
-                <motion.button 
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setAuthModalOpen(true)}
-                  className="bg-white/10 hover:bg-white/20 border-2 border-white/30 hover:border-white/50 text-white text-lg px-8 py-4 rounded-2xl inline-flex items-center gap-3 transition-all duration-300 backdrop-blur-sm"
-                >
-                  <Upload className="w-5 h-5" />
-                  Upload Video
-                </motion.button>
-              </motion.div>
-              
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 1 }}
-                className="flex items-center gap-6 text-white/80"
-              >
-                <div className="flex items-center gap-2">
-                  <Clock className="w-5 h-5" />
-                  <span>24hr Delivery</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Star className="w-5 h-5 text-yellow-400" />
-                  <span>₹99 per reel</span>
-                </div>
-              </motion.div>
-            </motion.div>
-            
-            {/* Right Content - 3D Phone Scene */}
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="relative"
-            >
-              <ThreePhoneScene />
-            </motion.div>
+                <Upload className="w-5 h-5" />
+                Upload Video
+              </button>
+            </div>
+            <p className="text-lg opacity-90">✨ 24-hour delivery • Only ₹99 per reel • Free revision</p>
           </div>
         </div>
 
         {/* Scroll Indicator */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 0.5 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <motion.div 
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-col items-center gap-2 text-white/70 cursor-pointer"
-            onClick={() => handleSmoothScroll('about')}
-          >
-            <span className="text-sm">Scroll to explore</span>
-            <ChevronDown className="w-6 h-6" />
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-24 bg-surface">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-20"
-          >
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              About <span className="text-sunset">EditMyTrip</span>
-            </h2>
-            <p className="text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              We're passionate travel content creators who understand the art of storytelling through video
-            </p>
-          </motion.div>
-
-          <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="text-center"
-            >
-              <div className="glass-card p-8 h-full">
-                <div className="w-20 h-20 bg-gradient-sunset rounded-full flex items-center justify-center mx-auto mb-6 shadow-glow">
-                  <Users className="w-10 h-10 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4">500+ Happy Travelers</h3>
-                <p className="text-muted-foreground">We've helped hundreds of adventurers share their stories and grow their following</p>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="text-center"
-            >
-              <div className="glass-card p-8 h-full">
-                <div className="w-20 h-20 bg-gradient-ocean rounded-full flex items-center justify-center mx-auto mb-6 shadow-tropical">
-                  <Video className="w-10 h-10 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4">1000+ Reels Created</h3>
-                <p className="text-muted-foreground">Each reel is crafted with attention to detail and creativity that stands out</p>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="text-center"
-            >
-              <div className="glass-card p-8 h-full">
-                <div className="w-20 h-20 bg-gradient-adventure rounded-full flex items-center justify-center mx-auto mb-6 shadow-glow">
-                  <Heart className="w-10 h-10 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4">99% Satisfaction</h3>
-                <p className="text-muted-foreground">Our clients love the results and come back for more amazing content</p>
-              </div>
-            </motion.div>
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white/70 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse"></div>
           </div>
         </div>
       </section>
 
-      {/* How It Works Section */}
-      <HowItWorksSection />
+      {/* About Us Section */}
+      <section id="about" className="py-24 bg-surface">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 fade-in">
+              About <span className="text-sunset">EditMyTrip</span>
+            </h2>
+            <p className="text-2xl text-muted-foreground max-w-3xl mx-auto fade-in leading-relaxed">
+              We're passionate travel content creators who understand the art of storytelling through video
+            </p>
+          </div>
 
-      {/* Pricing Section */}
-      <PricingSection />
+          <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+            <div className="text-center slide-left">
+              <div className="glass-card p-8">
+                <div className="w-20 h-20 bg-gradient-sunset rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Users className="w-10 h-10 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">500+ Happy Travelers</h3>
+                <p className="text-muted-foreground">We've helped hundreds of adventurers share their stories</p>
+              </div>
+            </div>
 
-      {/* Sample Reels Section */}
-      <SampleReelsSection />
+            <div className="text-center zoom-in">
+              <div className="glass-card p-8">
+                <div className="w-20 h-20 bg-gradient-ocean rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Video className="w-10 h-10 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">1000+ Reels Created</h3>
+                <p className="text-muted-foreground">Each reel is crafted with attention to detail and creativity</p>
+              </div>
+            </div>
 
-      {/* Testimonials Section */}
-      <TestimonialsSection />
+            <div className="text-center slide-right">
+              <div className="glass-card p-8">
+                <div className="w-20 h-20 bg-gradient-adventure rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Heart className="w-10 h-10 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">99% Satisfaction</h3>
+                <p className="text-muted-foreground">Our clients love the results and come back for more</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Services Section */}
       <section id="services" className="py-24">
@@ -818,8 +715,14 @@ const Index = () => {
         </div>
       </footer>
 
-      {/* Floating Elements */}
-      <FloatingTelegramButton />
+      {/* Floating Telegram Button */}
+      <button 
+        onClick={handleTelegramClick}
+        className="fixed bottom-8 right-8 w-16 h-16 bg-[#0088cc] rounded-full flex items-center justify-center z-50 shadow-glow hover:scale-110 transition-transform duration-300 md:hidden"
+        aria-label="Contact us on Telegram"
+      >
+        <MessageCircle className="w-8 h-8 text-white" />
+      </button>
 
       {/* Modals */}
       <AuthModal 
