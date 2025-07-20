@@ -241,8 +241,9 @@ const AdminVideos = () => {
     document.body.removeChild(link);
   };
 
-  const openTelegram = () => {
-    window.open('https://t.me/Rakesh4280', '_blank');
+  const openWhatsApp = (phoneNumber: string, message: string) => {
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
   };
 
   if (loading) {
@@ -418,7 +419,7 @@ const AdminVideos = () => {
                                 </Button>
                                 <Button
                                   variant="outline"
-                                  onClick={() => openTelegram()}
+                                  onClick={() => openWhatsApp('916287116458', `Hi! Your video "${video.title}" has been updated. Please check your account for the latest status.`)}
                                 >
                                   Contact User
                                 </Button>

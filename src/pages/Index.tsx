@@ -36,8 +36,10 @@ const Index = () => {
     };
   }, []);
 
-  const handleTelegramClick = () => {
-    window.open('https://t.me/Rakesh4280', '_blank');
+  const handleWhatsAppClick = () => {
+    const message = "Hi, I want to get my travel reel edited!";
+    const phoneNumber = "916287116458";
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   const handleSmoothScroll = (elementId: string) => {
@@ -119,7 +121,7 @@ const Index = () => {
               >
                 Admin Login
               </a>
-              <button onClick={handleTelegramClick} className="btn-adventure text-sm">Get Started</button>
+              <button onClick={handleWhatsAppClick} className="btn-adventure text-sm">Get Started</button>
             </div>
 
             {/* Mobile Hamburger Button */}
@@ -236,7 +238,7 @@ const Index = () => {
               </a>
               <button 
                 onClick={() => {
-                  handleTelegramClick();
+                  handleWhatsAppClick();
                   setMobileMenuOpen(false);
                 }}
                 className="w-full btn-adventure mt-4"
@@ -299,11 +301,11 @@ const Index = () => {
           <div className="scale-in">
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
               <button 
-                onClick={handleTelegramClick}
+                onClick={handleWhatsAppClick}
                 className="btn-adventure text-lg px-8 py-4 inline-flex items-center gap-3 w-full sm:w-auto"
               >
                 <MessageCircle className="w-5 h-5" />
-                Connect to Telegram
+                Connect to WhatsApp
               </button>
               <div className="text-white/70 text-lg hidden sm:block">or</div>
               <button 
@@ -465,7 +467,7 @@ const Index = () => {
                 </div>
                 <h3 className="text-3xl font-bold mb-6">1. Upload Your Clips</h3>
                 <p className="text-muted-foreground leading-relaxed text-lg">
-                  Send us your raw travel footage via Telegram or Google Drive. 
+                  Send us your raw travel footage via WhatsApp or Google Drive. 
                   We accept all formats and any duration.
                 </p>
               </div>
@@ -554,7 +556,7 @@ const Index = () => {
 
           <div className="text-center mt-16">
             <button 
-              onClick={handleTelegramClick}
+              onClick={handleWhatsAppClick}
               className="btn-ocean text-xl px-12 py-6 inline-flex items-center gap-4"
             >
               <MessageCircle className="w-6 h-6" />
@@ -662,16 +664,16 @@ const Index = () => {
               </div>
               
               <div className="relative z-10">
-                <div className="w-32 h-32 bg-[#0088cc] rounded-full flex items-center justify-center mx-auto mb-8 shadow-glow">
+                <div className="w-32 h-32 bg-[#25d366] rounded-full flex items-center justify-center mx-auto mb-8 shadow-glow">
                   <MessageCircle className="w-16 h-16 text-white" />
                 </div>
-                <h3 className="text-3xl font-bold mb-6">Contact Us on Telegram</h3>
+                <h3 className="text-3xl font-bold mb-6">Contact Us on WhatsApp</h3>
                 <p className="text-muted-foreground mb-8 leading-relaxed text-lg">
                   Send us your travel clips and get your professional reel within 24 hours. 
                   It's that simple!
                 </p>
                 <button 
-                  onClick={handleTelegramClick}
+                  onClick={handleWhatsAppClick}
                   className="btn-adventure text-xl px-12 py-6 inline-flex items-center gap-4 w-full md:w-auto"
                 >
                   <Send className="w-6 h-6" />
@@ -715,11 +717,11 @@ const Index = () => {
         </div>
       </footer>
 
-      {/* Floating Telegram Button */}
+      {/* Floating WhatsApp Button */}
       <button 
-        onClick={handleTelegramClick}
-        className="fixed bottom-8 right-8 w-16 h-16 bg-[#0088cc] rounded-full flex items-center justify-center z-50 shadow-glow hover:scale-110 transition-transform duration-300 md:hidden"
-        aria-label="Contact us on Telegram"
+        onClick={handleWhatsAppClick}
+        className="fixed bottom-8 right-8 w-16 h-16 bg-[#25d366] rounded-full flex items-center justify-center z-50 shadow-glow hover:scale-110 transition-transform duration-300 md:hidden"
+        aria-label="Contact us on WhatsApp"
       >
         <MessageCircle className="w-8 h-8 text-white" />
       </button>
