@@ -399,26 +399,26 @@
     transform: scale(1);
   }
 
-  /* WhatsApp Floating Button */
-  .whatsapp-float {
+  /* Telegram Floating Button */
+  .telegram-float {
     position: fixed;
     bottom: 30px;
     right: 30px;
     width: 60px;
     height: 60px;
-    background: #25d366;
+    background: #0088cc;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+    box-shadow: 0 4px 16px rgba(0, 136, 204, 0.3);
     transition: var(--transition-spring);
     z-index: 1000;
   }
   
-  .whatsapp-float:hover {
+  .telegram-float:hover {
     transform: scale(1.1);
-    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+    box-shadow: 0 8px 24px rgba(0, 136, 204, 0.4);
   }
 
   /* Responsive Grid */
