@@ -1,73 +1,47 @@
-# Welcome to your Lovable project
+# ✈️ editMyTrip
 
-## Project info
+Most people return from amazing trips with tons of video footage — but don’t know how to turn them into professional-looking, short reels. Either they keep waiting for friends to help or end up never using the clips at all.
 
-**URL**: https://lovable.dev/projects/5cf7df96-f149-4a60-b419-353749ce1f04
+That’s where **editMyTrip** comes in.
 
-## How can I edit this code?
+## 🎬 What We Do
 
-There are several ways of editing your application.
+**editMyTrip** is a travel reel editing service. We take your raw travel clips and transform them into polished, engaging short-form content perfect for:
 
-**Use Lovable**
+- 📸 Instagram Reels  
+- 🎥 YouTube Shorts  
+- 🎞️ Facebook Stories  
+- 📱 WhatsApp Status  
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/5cf7df96-f149-4a60-b419-353749ce1f04) and start prompting.
+No editing skills required — just send us your videos, and we handle the rest!
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🚀 How It Works
 
-**Use your preferred IDE**
+1. **Send Your Clips** – Upload your raw videos via our platform.
+2. **Choose Your Style** – Select your music, vibe, or let us decide what fits best.
+3. **We Edit** – Our editors transform your footage into a stunning reel.
+4. **You Share** – Get your final video, optimized for social platforms, ready to post.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 💡 Why editMyTrip?
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- 🧑‍🎨 Professional Editing
+- ⏱️ Fast Turnaround
+- 📱 Social-Ready Formats
+- 🎵 Music Syncing, Transitions & Effects
 
-Follow these steps:
+## 📦 Features (Coming Soon)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- AI-powered auto-highlights
+- Multi-language subtitles
+- Personal dashboard to track orders
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 📞 Get In Touch
 
-# Step 3: Install the necessary dependencies.
-npm i
+Want your trip to look epic online?  
+📧 Email: support@editmytrip.com  
+🌐 Website: [editmytrip.lovable.app](https://editmytrip.lovable.app/)
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+---
 
-**Edit a file directly in GitHub**
+> “Your travel stories deserve better than sitting in a gallery. Let us make them unforgettable.”
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/5cf7df96-f149-4a60-b419-353749ce1f04) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
