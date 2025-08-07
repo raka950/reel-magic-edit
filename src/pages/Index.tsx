@@ -71,10 +71,10 @@ const Index = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-6">
-              <button onClick={() => handleSmoothScroll('about')} className="text-muted-foreground hover:text-sunset-orange transition-colors">About</button>
-              <button onClick={() => handleSmoothScroll('services')} className="text-muted-foreground hover:text-sunset-orange transition-colors">Services</button>
-              <button onClick={() => handleSmoothScroll('samples')} className="text-muted-foreground hover:text-sunset-orange transition-colors">Samples</button>
-              <button onClick={() => handleSmoothScroll('testimonials')} className="text-muted-foreground hover:text-sunset-orange transition-colors">Reviews</button>
+              <button onClick={() => handleSmoothScroll('about')} className="text-white/90 hover:text-white transition-colors">About</button>
+              <button onClick={() => handleSmoothScroll('services')} className="text-white/90 hover:text-white transition-colors">Services</button>
+              <button onClick={() => handleSmoothScroll('samples')} className="text-white/90 hover:text-white transition-colors">Samples</button>
+              <button onClick={() => handleSmoothScroll('testimonials')} className="text-white/90 hover:text-white transition-colors">Reviews</button>
               
               {!loading && (
                 <>
@@ -89,7 +89,7 @@ const Index = () => {
                       </button>
                       <button 
                         onClick={signOut}
-                        className="text-muted-foreground hover:text-sunset-orange transition-colors flex items-center gap-2"
+                        className="text-white/90 hover:text-white transition-colors flex items-center gap-2"
                       >
                         <LogOut className="w-4 h-4" />
                         Sign Out
@@ -124,7 +124,7 @@ const Index = () => {
               
               <a 
                 href="/admin/dashboard" 
-                className="text-xs text-muted-foreground hover:text-sunset-orange transition-colors border border-border px-3 py-1 rounded-md"
+                className="inline-flex items-center gap-2 text-white border-2 border-white/40 px-4 py-2 rounded-lg hover:bg-white/10 transition-colors"
               >
                 Admin Login
               </a>
@@ -150,7 +150,7 @@ const Index = () => {
                   handleSmoothScroll('about');
                   setMobileMenuOpen(false);
                 }} 
-                className="block w-full text-left text-muted-foreground hover:text-sunset-orange transition-colors py-2"
+                className="block w-full text-left text-white/90 hover:text-white transition-colors py-2"
               >
                 About
               </button>
@@ -159,7 +159,7 @@ const Index = () => {
                   handleSmoothScroll('services');
                   setMobileMenuOpen(false);
                 }} 
-                className="block w-full text-left text-muted-foreground hover:text-sunset-orange transition-colors py-2"
+                className="block w-full text-left text-white/90 hover:text-white transition-colors py-2"
               >
                 Services
               </button>
@@ -168,7 +168,7 @@ const Index = () => {
                   handleSmoothScroll('samples');
                   setMobileMenuOpen(false);
                 }} 
-                className="block w-full text-left text-muted-foreground hover:text-sunset-orange transition-colors py-2"
+                className="block w-full text-left text-white/90 hover:text-white transition-colors py-2"
               >
                 Samples
               </button>
@@ -177,7 +177,7 @@ const Index = () => {
                   handleSmoothScroll('testimonials');
                   setMobileMenuOpen(false);
                 }} 
-                className="block w-full text-left text-muted-foreground hover:text-sunset-orange transition-colors py-2"
+                className="block w-full text-left text-white/90 hover:text-white transition-colors py-2"
               >
                 Reviews
               </button>
@@ -201,7 +201,7 @@ const Index = () => {
                           signOut();
                           setMobileMenuOpen(false);
                         }}
-                        className="w-full text-muted-foreground hover:text-sunset-orange transition-colors py-2 flex items-center justify-center gap-2"
+                        className="w-full text-white/90 hover:text-white transition-colors py-2 flex items-center justify-center gap-2"
                       >
                         <LogOut className="w-4 h-4" />
                         Sign Out
@@ -238,7 +238,7 @@ const Index = () => {
               
               <a 
                 href="/admin/dashboard" 
-                className="w-full text-center text-xs text-muted-foreground hover:text-sunset-orange transition-colors border border-border px-3 py-2 rounded-md block"
+                className="w-full text-center text-white border-2 border-white/40 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors block"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Admin Login
