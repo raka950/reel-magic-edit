@@ -124,7 +124,7 @@ const Index = () => {
               
               <a 
                 href="/admin/dashboard" 
-                className="text-white transition-colors border border-white/30 hover:border-white/50 px-4 py-2 rounded-lg text-sm"
+                className="bg-gradient-to-r from-primary to-secondary text-primary-foreground px-4 py-2 rounded-lg text-base hover:opacity-90 transition-all duration-300"
               >
                 Admin Login
               </a>
@@ -238,7 +238,7 @@ const Index = () => {
               
               <a 
                 href="/admin/dashboard" 
-                className="w-full text-center text-white transition-colors border border-white/30 hover:border-white/50 px-4 py-3 rounded-lg text-base block"
+                className="w-full text-center bg-gradient-to-r from-primary to-secondary text-primary-foreground px-4 py-3 rounded-lg hover:opacity-90 transition-all duration-300 text-base block"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Admin Login
