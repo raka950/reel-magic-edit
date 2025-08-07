@@ -49,7 +49,7 @@ const Index = () => {
     <div className="min-h-screen bg-background font-body travel-bg">
       {/* Navigation */}
       <nav className="fixed top-0 w-full glass-card backdrop-blur-lg border-b border-white/20 z-50">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-6 py-3 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl shadow-glow ring-1 ring-white/10">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img 
