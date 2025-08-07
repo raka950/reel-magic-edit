@@ -124,7 +124,7 @@ const Index = () => {
               
               <a 
                 href="/admin/dashboard" 
-                className="text-xs text-muted-foreground hover:text-sunset-orange transition-colors border border-border px-3 py-1 rounded-md"
+                className="text-white transition-colors border border-white/30 hover:border-white/50 px-4 py-2 rounded-lg text-sm"
               >
                 Admin Login
               </a>
@@ -238,7 +238,7 @@ const Index = () => {
               
               <a 
                 href="/admin/dashboard" 
-                className="w-full text-center text-xs text-muted-foreground hover:text-sunset-orange transition-colors border border-border px-3 py-2 rounded-md block"
+                className="w-full text-center text-white transition-colors border border-white/30 hover:border-white/50 px-4 py-3 rounded-lg text-base block"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Admin Login
@@ -256,7 +256,7 @@ const Index = () => {
           </div>
         </div>
       </nav>
-
+      <div aria-hidden="true" className="h-6 bg-white"></div>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Video/Image */}
