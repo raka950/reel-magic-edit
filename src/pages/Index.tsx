@@ -10,6 +10,7 @@ const Index = () => {
   const [authMode, setAuthMode] = useState<'signin' | 'signup'>('signin');
   const [uploadModalOpen, setUploadModalOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { user, signOut, loading } = useAuth();
 
   useEffect(() => {
@@ -36,6 +37,14 @@ const Index = () => {
     };
   }, []);
 
+  // Toggle transparent nav on scroll
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll(); // set initial state
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   const handleTelegramClick = () => {
     window.open('https://t.me/Rakesh4280', '_blank');
   };
@@ -49,7 +58,7 @@ const Index = () => {
     <div className="min-h-screen bg-background font-body travel-bg">
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-transparent supports-[backdrop-filter]:bg-white/5 backdrop-blur-xl border-b border-white/10 z-50">
-        <div className="container mx-auto px-6 py-3 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl shadow-glow ring-1 ring-white/10">
+        <div className={`container mx-auto px-6 py-3 rounded-3xl border backdrop-blur-xl transition-all duration-300 ${scrolled ? 'bg-transparent border-transparent shadow-none ring-0' : 'bg-white/10 border-white/20 shadow-glow ring-1 ring-white/10'}`}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img 
